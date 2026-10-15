@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0b1215;
+  --color-panel: #111b20;
+  --color-line: #22313a;
+  --color-text: #e6ecee;
+  --color-muted: #93a3aa;
+  --color-signal: #6aa7ff;
+  --font-sans: "Schibsted Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+:root { color-scheme: dark; }
+html { scroll-behavior: smooth; }
+body { background: var(--color-ink); color: var(--color-text); font-family: var(--font-sans); }
+:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; }
+
+/* Único momento animado: la malla se refina hacia el punto de resolución. */
+.lv { opacity: 0; animation: refine .6s ease-out forwards; animation-delay: var(--d, 0s); }
+@keyframes refine { to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .lv { opacity: 1; animation: none; } html { scroll-behavior: auto; } }
